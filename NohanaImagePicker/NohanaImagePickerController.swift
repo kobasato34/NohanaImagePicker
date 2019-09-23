@@ -110,6 +110,12 @@ open class NohanaImagePickerController: UIViewController {
         view.addSubview(navigationController.view)
         navigationController.didMove(toParent: self)
 
+        if #available(iOS 13.0, *) {
+            navigationController.navigationBar.tintColor = .label
+        } else {
+            navigationController.navigationBar.tintColor = .black
+        }
+
         // setup albumListViewController
         guard let albumListViewController = navigationController.topViewController as? AlbumListViewController else {
             fatalError("albumListViewController is not topViewController.")

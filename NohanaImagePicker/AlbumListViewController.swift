@@ -260,7 +260,13 @@ extension UIViewController {
         let rightSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 
         let infoButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-//        infoButton.tintColor = UIColor(named: "TextColor")!
+
+        if #available(iOS 13.0, *) {
+            infoButton.tintColor = .label
+        } else {
+            infoButton.tintColor = .black
+        }
+        
         infoButton.isEnabled = false
         infoButton.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.black], for: UIControl.State())
         self.toolbarItems = [leftSpace, infoButton, rightSpace]
